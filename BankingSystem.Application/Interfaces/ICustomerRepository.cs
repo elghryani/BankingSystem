@@ -4,5 +4,6 @@ namespace BankingSystem.Application.Interfaces
 {
     public interface ICustomerRepository : IRepository<Customer>
     {
+        Task<bool> ExistsByPhoneNumberAsync(string phoneNumber);
     }
 }

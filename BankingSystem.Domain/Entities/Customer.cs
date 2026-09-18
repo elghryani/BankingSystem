@@ -26,7 +26,7 @@ namespace BankingSystem.Domain.Entities
                 LastName = lastName,
                 Email = email,
                 PhoneNumber = phoneNumber,
-                Status = EnUserStatus.Active,
+                Status = EnUserStatus.Pending,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = null
             };

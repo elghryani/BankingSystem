@@ -2,6 +2,7 @@
 {
     public enum EnUserStatus
     {
+        Pending,
         Active,
         InActive
     }

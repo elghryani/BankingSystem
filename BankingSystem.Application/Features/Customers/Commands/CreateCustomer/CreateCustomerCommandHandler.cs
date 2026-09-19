@@ -15,7 +15,7 @@ namespace BankingSystem.Application.Features.Customers.Commands.CreateCustomer
         {
             if (await _unitOfWork.CustomerRepository.ExistsByPhoneNumberAsync(request.PhoneNumber))
             {
-                throw new CustomerPhoneAlreadyExistsException(request.PhoneNumber);
+                throw new PhoneNumberAlreadyExistsException(request.PhoneNumber);
             }
 
             var newCustomer = Customer.Create(request.FirstName, request.LastName,request.Email,request.PhoneNumber);

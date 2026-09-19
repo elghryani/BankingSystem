@@ -4,6 +4,7 @@ namespace BankingSystem.Application.Interfaces
 {
     public interface IEmployeeRepository : IRepository<Employee>
     {
+        Task<bool> ExistsByUserNameAsync(string UserName);
         Task<bool> ExistsByPhoneNumberAsync(string phoneNumber);
     }
 }

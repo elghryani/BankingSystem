@@ -2,6 +2,7 @@
 {
     public interface IUnitOfWork
     {
+        
         IAccountRepository AccountRepository { get; }
         ITransactionRepository TransactionRepository { get; }
         IEmployeeRepository EmployeeRepository { get; }

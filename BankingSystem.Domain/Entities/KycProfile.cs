@@ -29,7 +29,7 @@ namespace BankingSystem.Domain.Entities
                 DateOfBirth = dateOfBirth,
                 Address = address,
                 SourceOfIncome = sourceOfIncome,
-                KYCStatus = EnKYCStatus.Verified,
+                KYCStatus = EnKYCStatus.Pending,
                 SubmittedAt = DateTime.UtcNow
             };
         }

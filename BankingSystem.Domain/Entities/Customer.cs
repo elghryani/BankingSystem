@@ -1,5 +1,4 @@
 ﻿using BankingSystem.Domain.Enums;
-using System.Net.NetworkInformation;
 
 namespace BankingSystem.Domain.Entities
 {
@@ -56,6 +55,19 @@ namespace BankingSystem.Domain.Entities
             UpdatedAt = DateTime.UtcNow;
         }
 
+        public void Active()
+        {
+            if (Profile == null)
+                throw new InvalidOperationException("KYC profile is required.");
+
+            if (Status != EnUserStatus.Pending)
+                throw new InvalidOperationException("User must be pending.");
+
+            Profile.VerifyKyc();
+
+            Status = EnUserStatus.Active;
+
+        }
         public void Deactivate()
         {
             Status = EnUserStatus.InActive;

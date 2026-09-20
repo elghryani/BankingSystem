@@ -14,11 +14,11 @@ namespace BankingSystem.Application.Features.Customers.Commands.ActivateCustomer
 
         public async Task<ActivateCustomerResponse> Handle(ActivateCustomerCommand request, CancellationToken cancellationToken)
         {
-            var customer =await _unitOfWork.CustomerRepository.GetByIdWithKycAsync(request.CustomerId);
+            var customer =await _unitOfWork.CustomerRepository.GetByIdWithKycAsync(request.customerId);
 
             if (customer == null) 
             {
-                throw new NotFoundException<Customer>(request.CustomerId);
+                throw new NotFoundException<Customer>(request.customerId);
             }
 
             customer.Active();

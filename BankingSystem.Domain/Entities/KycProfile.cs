@@ -41,5 +41,19 @@ namespace BankingSystem.Domain.Entities
             Address = address;
             SourceOfIncome = sourceOfIncome;
         }
+
+
+        internal void VerifyKyc()
+        {
+            if(KYCStatus == EnKYCStatus.Pending)
+            {
+                if (KYCStatus != EnKYCStatus.Pending)
+                    throw new InvalidOperationException("KYC must be pending.");
+
+                KYCStatus = EnKYCStatus.Verified;
+
+
+            }
+        }
     }
 }

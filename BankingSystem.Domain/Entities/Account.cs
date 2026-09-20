@@ -42,6 +42,20 @@ namespace BankingSystem.Domain.Entities
             UpdatedAt = DateTime.UtcNow;
         }
 
+        public void Withdraw(decimal amount)
+        {
+            if (amount <= 0)
+                throw new ArgumentOutOfRangeException("Withdraw amount must be greater than zero.");
+
+            if (amount > Balance)
+                throw new InvalidOperationException();
+
+            if (Status != EnAccountStatus.Active)
+                throw new InvalidOperationException("Cannot deposit into an inactive account.");
+
+            Balance -= amount;
+        }
+
 
     }
 }

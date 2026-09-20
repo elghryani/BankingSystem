@@ -5,7 +5,7 @@ namespace BankingSystem.Application.Features.Customers.Commands.ActivateCustomer
     {
         public ActivateCustomerCommandValidator() 
         {
-            RuleFor(x => x.CustomerId)
+            RuleFor(x => x.customerId)
                 .NotEmpty()
                 .WithMessage("Customer ID is required.");
         }

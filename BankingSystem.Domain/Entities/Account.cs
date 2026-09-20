@@ -11,11 +11,10 @@ namespace BankingSystem.Domain.Entities
         public EnAccountStatus Status { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime? UpdatedAt { get; private set; }
-
         public Customer Customer { get; private set; }
 
         private Account() { }
-        public static Account Create(Guid customerId,string accountNumber, decimal balance)
+        public static Account Create(Guid customerId,string accountNumber, decimal balance = 0m)
         {
             if (balance < 0)
                 throw new ArgumentOutOfRangeException();

@@ -2,8 +2,8 @@
 {
     public record GetSourceAccountResponse(string accountNumber,
         string fullName,
-        decimal Balance,
-        string AccountStatus
+        decimal balance,
+        string accountStatus
         );
     
     

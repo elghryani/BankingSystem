@@ -5,6 +5,6 @@ namespace BankingSystem.Application.Interfaces
     public interface ICustomerRepository : IRepository<Customer>
     {
         Task<bool> ExistsByPhoneNumberAsync(string phoneNumber);
-        Task<Customer> GetByIdWithKycAsync(Guid CustomerId);
+        Task<Customer?> GetByIdWithKycAsync(Guid? CustomerId);
     }
 }

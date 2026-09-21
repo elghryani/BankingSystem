@@ -1,14 +1,17 @@
 ﻿using BankingSystem.Application.Exceptions;
 using BankingSystem.Application.Interfaces;
+using BankingSystem.Application.Interfaces.Common;
 using MediatR;
 namespace BankingSystem.Application.Features.Employee.Commands.CreateEmployee
 {
     public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeCommand, Guid>
     {
         private readonly IUnitOfWork _unitOfWork;
-        public CreateEmployeeCommandHandler(IUnitOfWork unitOfWork)
+        private readonly IPasswordHasher _passwordHasher;
+        public CreateEmployeeCommandHandler(IUnitOfWork unitOfWork,IPasswordHasher passwordHasher)
         {
             _unitOfWork = unitOfWork;
+            _passwordHasher = passwordHasher;
         }
         public async Task<Guid> Handle(CreateEmployeeCommand request, CancellationToken cancellationToken)
         {
@@ -23,7 +26,7 @@ namespace BankingSystem.Application.Features.Employee.Commands.CreateEmployee
 
             var newEmployee = Domain.Entities.Employee.Create(request.UserName,
                 request.Email,
-                request.Password,
+                _passwordHasher.Hash(request.Password),
                 request.PhoneNumber);
 
             await _unitOfWork.EmployeeRepository.AddAsync(newEmployee);

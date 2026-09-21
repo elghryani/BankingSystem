@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using BankingSystem.Application.Common.Behaviors;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BankingSystem.Application
@@ -14,6 +16,8 @@ namespace BankingSystem.Application
             });
 
             services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             return services;
         }

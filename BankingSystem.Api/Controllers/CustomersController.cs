@@ -23,13 +23,15 @@ namespace BankingSystem.Api.Controllers
             return Ok(customerId);
         }
 
-        [HttpPatch]
-        public async Task<IActionResult> ActivateCustomer(ActivateCustomerCommand command , CancellationToken cancellationToken)
+        [HttpPatch("{id}/activate")]
+        public async Task<IActionResult> ActivateCustomer(Guid id, CancellationToken cancellationToken)
         {
+            var command = new ActivateCustomerCommand(id);
+
             var customer = await _sender.Send(command, cancellationToken);
+
             return Ok(customer);
         }
-      
 
 
     }

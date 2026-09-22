@@ -17,7 +17,7 @@ namespace BankingSystem.Application.Features.Accounts.Commands.DepositMoney
 
             if (account == null) 
             {
-                throw new NotFoundException<Account>(null);
+                throw new NotFoundException(nameof(Account),request.accountNumber);
             }
             account.Deposit(request.amount);
 

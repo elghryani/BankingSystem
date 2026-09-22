@@ -18,7 +18,7 @@ namespace BankingSystem.Application.Features.Customers.Commands.ActivateCustomer
 
             if (customer == null) 
             {
-                throw new NotFoundException<Customer>(request.customerId);
+                throw new NotFoundException(nameof(Customer),request.customerId);
             }
 
             customer.Active();

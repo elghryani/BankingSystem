@@ -17,11 +17,12 @@ namespace BankingSystem.Application.Features.Accounts.Commands.CreateAccount
 
             if (customer == null) 
             {
-                throw new NotFoundException<Customer>(request.customerId);
+                throw new NotFoundException(nameof(Account),request.customerId);
             }
+
             if (customer.Profile == null) 
             {
-                throw new NotFoundException<KycProfile>(request.customerId);
+                throw new NotFoundException(nameof(KycProfile),request.customerId);
             }
 
             if(customer.Status == Domain.Enums.EnUserStatus.Active && customer.Profile.KYCStatus == Domain.Enums.EnKYCStatus.Verified)

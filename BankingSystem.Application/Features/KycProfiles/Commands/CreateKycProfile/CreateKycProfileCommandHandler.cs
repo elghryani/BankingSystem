@@ -26,6 +26,8 @@ namespace BankingSystem.Application.Features.KycProfiles.Commands.CreateKycProfi
 
             customer.AddKycProfile(request.IdentityNumber, request.DateOfBirth, request.Address, request.SourceOfIncome);
 
+            await _unitOfWork.KycRepository.AddAsync(customer.Profile!, cancellationToken);
+
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return customer.Profile!.Id;

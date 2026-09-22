@@ -12,7 +12,7 @@ namespace BankingSystem.Domain.Entities
         public EnSourceOfIncome SourceOfIncome { get; private set; }
         public EnKYCStatus KYCStatus { get; private set; }
         public DateTime SubmittedAt { get; private set; }
-        public DateTime VerifiedAt { get; private set; }
+        public DateTime? VerifiedAt { get; private set; }
 
         public Customer Customer { get; private set; }
 

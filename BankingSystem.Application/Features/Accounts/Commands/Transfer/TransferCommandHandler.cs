@@ -16,14 +16,14 @@ namespace BankingSystem.Application.Features.Accounts.Commands.Transfer
             var fromAccount = await _unitOfWork.AccountRepository.GetByAccountNumberAsync(request.fromAccountNumber);
 
             if (fromAccount == null)
-                throw new NotFoundException<Account>(null);
+                throw new NotFoundException(nameof(Account),request.fromAccountNumber);
 
             
 
             var toAccount = await _unitOfWork.AccountRepository.GetByAccountNumberAsync(request.toAccountNumber);
 
             if (toAccount == null)
-                throw new NotFoundException<Account>(null);
+                throw new NotFoundException(nameof(Account),request.toAccountNumber);
 
             fromAccount.Withdraw(request.amount);
 

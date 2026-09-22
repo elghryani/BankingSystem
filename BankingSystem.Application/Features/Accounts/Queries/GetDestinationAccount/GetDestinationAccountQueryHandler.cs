@@ -17,7 +17,7 @@ namespace BankingSystem.Application.Features.Accounts.Queries.GetDestinationAcco
             var account = await _unitOfWork.AccountRepository.GetDestinationAccount(request.accountNumber);
 
             if (account == null)
-                throw new NotFoundException<Account>(null);
+                throw new NotFoundException(nameof(Account),request.accountNumber);
 
             return account;
         }

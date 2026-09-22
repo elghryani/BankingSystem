@@ -1,11 +1,6 @@
 ﻿
 namespace BankingSystem.Application.Exceptions
 {
-    public class NotFoundException<T> : Exception
-    {
-        public NotFoundException(Guid? id)
-            : base($"{typeof(T).Name} with ID '{id}' was not found.")
-        {
-        }
-    }
+    public class NotFoundException(string entyity, object id) : Exception($"the {entyity} with id: {id} not found");
+    
 }

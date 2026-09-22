@@ -16,7 +16,7 @@ namespace BankingSystem.Application.Features.KycProfiles.Commands.CreateKycProfi
             var customer =await _unitOfWork.CustomerRepository.GetByIdAsync(request.CustomerId);
             if (customer is null)
             {
-                throw new NotFoundException<Customer>(request.CustomerId);
+                throw new NotFoundException(nameof(Customer),request.CustomerId);
             }
 
             if (await _unitOfWork.KycRepository.IdentityNumberExistsAsync(request.IdentityNumber,cancellationToken)) 

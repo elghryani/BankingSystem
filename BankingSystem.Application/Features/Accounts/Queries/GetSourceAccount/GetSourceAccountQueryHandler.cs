@@ -16,7 +16,7 @@ namespace BankingSystem.Application.Features.Accounts.Queries.GetSourceAccount
             var account = await _unitOfWork.AccountRepository.GetSourceAccountAsync(request.accountNumber);
 
             if (account is null)
-                throw new NotFoundException<Account>(null);
+                throw new NotFoundException(nameof(Account),request.accountNumber);
 
             
 

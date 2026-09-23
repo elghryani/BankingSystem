@@ -16,5 +16,12 @@ namespace BankingSystem.Infrastructure.Persistence.Repositories
         {
             return await _appDbContext.Employees.AnyAsync(e => e.UserName == UserName);
         }
+
+       
+
+        public async Task<Employee?> FindByUserNameAsync(string userName)
+        {
+            return await _appDbContext.Employees.FirstOrDefaultAsync(e => e.UserName == userName);
+        }
     }
 }

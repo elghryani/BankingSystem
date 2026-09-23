@@ -6,5 +6,6 @@ namespace BankingSystem.Application.Interfaces
     {
         Task<bool> ExistsByUserNameAsync(string UserName);
         Task<bool> ExistsByPhoneNumberAsync(string phoneNumber);
+        Task<Employee?> FindByUserNameAsync(string userName);
     }
 }

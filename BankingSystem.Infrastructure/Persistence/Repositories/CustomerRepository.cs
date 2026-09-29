@@ -26,6 +26,13 @@ namespace BankingSystem.Infrastructure.Persistence.Repositories
                         .FirstOrDefaultAsync(x => x.Id == CustomerId);
         }
 
+        public async Task<Customer?> GetByIdWithProfileAsync(Guid? CustomerId)
+        {
+            return await _appDbContext.Customers
+                        .Include(x => x.Profile)
+                        .FirstOrDefaultAsync(x => x.Id == CustomerId);
+        }
+
         public async Task<List<GetPendingCustomersResponse>> GetPendingCustomersAsync()
         {
             return await _appDbContext.Customers

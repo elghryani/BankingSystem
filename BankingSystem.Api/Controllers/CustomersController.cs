@@ -2,7 +2,9 @@
 using BankingSystem.Application.Features.Customers.Commands.CreateCustomer;
 using BankingSystem.Application.Features.Customers.Queries.GetPendingCustomers;
 using MediatR;
+
 using Microsoft.AspNetCore.Mvc;
+using BankingSystem.Application.Features.Customers.Queries.GetCustomerById;
 
 namespace BankingSystem.Api.Controllers
 {
@@ -38,6 +40,13 @@ namespace BankingSystem.Api.Controllers
         {
             var customers = await _sender.Send(new GetPendingCustomersQuery(), cancellationToken);
             return Ok(customers);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCustomerById(Guid id, CancellationToken cancellationToken)
+        {
+            var customer = await _sender.Send(new GetCustomerByIdQuery(id), cancellationToken);
+            return Ok(customer);
         }
 
         

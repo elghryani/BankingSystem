@@ -1,6 +1,9 @@
-﻿using BankingSystem.Application.Interfaces;
+﻿using BankingSystem.Application.Features.Customers.Queries.GetPendingCustomers;
+using BankingSystem.Application.Interfaces;
 using BankingSystem.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using BankingSystem.Domain.Enums;
+
 
 namespace BankingSystem.Infrastructure.Persistence.Repositories
 {
@@ -21,6 +24,18 @@ namespace BankingSystem.Infrastructure.Persistence.Repositories
             return await _appDbContext.Customers
                         .Include(x => x.Profile)
                         .FirstOrDefaultAsync(x => x.Id == CustomerId);
+        }
+
+        public async Task<List<GetPendingCustomersResponse>> GetPendingCustomersAsync()
+        {
+            return await _appDbContext.Customers
+                        .Where(x => x.Status == EnUserStatus.Pending)
+                        .Select(x => new GetPendingCustomersResponse(
+                            x.Id,
+                            x.FirstName + " " + x.LastName,
+                            x.PhoneNumber,
+                            x.Status
+                            )).ToListAsync();
         }
     }
 }

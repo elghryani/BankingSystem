@@ -1,5 +1,6 @@
 ﻿using BankingSystem.Application.Features.Customers.Commands.ActivateCustomer;
 using BankingSystem.Application.Features.Customers.Commands.CreateCustomer;
+using BankingSystem.Application.Features.Customers.Queries.GetPendingCustomers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,14 @@ namespace BankingSystem.Api.Controllers
 
             return Ok(customer);
         }
+        [HttpGet("pending")]
+        public async Task<IActionResult> GetPendingCustomers(CancellationToken cancellationToken)
+        {
+            var customers = await _sender.Send(new GetPendingCustomersQuery(), cancellationToken);
+            return Ok(customers);
+        }
+
+        
 
 
     }

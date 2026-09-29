@@ -42,6 +42,7 @@ namespace BankingSystem.Api.Controllers
                 UserName = user.userName,
                 PhoneNumber = user.phoneNumber,
                 Status = user.status.ToString(),
+                Token = user.accessToken,
             });
 
         }

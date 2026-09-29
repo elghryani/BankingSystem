@@ -1,4 +1,5 @@
-﻿using BankingSystem.Domain.Entities;
+﻿using BankingSystem.Application.Features.Customers.Queries.GetPendingCustomers;
+using BankingSystem.Domain.Entities;
 
 namespace BankingSystem.Application.Interfaces
 {
@@ -6,5 +7,6 @@ namespace BankingSystem.Application.Interfaces
     {
         Task<bool> ExistsByPhoneNumberAsync(string phoneNumber);
         Task<Customer?> GetByIdWithKycAsync(Guid? CustomerId);
+        Task<List<GetPendingCustomersResponse>> GetPendingCustomersAsync();
     }
 }

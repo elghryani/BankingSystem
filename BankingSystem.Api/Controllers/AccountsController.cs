@@ -4,12 +4,15 @@ using BankingSystem.Application.Features.Accounts.Commands.Transfer;
 using BankingSystem.Application.Features.Accounts.Queries.GetDestinationAccount;
 using BankingSystem.Application.Features.Accounts.Queries.GetSourceAccount;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankingSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
+
     public class AccountsController : ControllerBase
     {
         private readonly ISender _sender;
@@ -18,6 +21,7 @@ namespace BankingSystem.Api.Controllers
             _sender = sender;
         }
         [HttpPost]
+       
         public async Task<IActionResult> Create(
             CreateAccountCommand command,
             CancellationToken cancellationToken)

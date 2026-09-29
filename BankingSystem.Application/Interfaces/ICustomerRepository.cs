@@ -8,5 +8,6 @@ namespace BankingSystem.Application.Interfaces
         Task<bool> ExistsByPhoneNumberAsync(string phoneNumber);
         Task<Customer?> GetByIdWithKycAsync(Guid? CustomerId);
         Task<List<GetPendingCustomersResponse>> GetPendingCustomersAsync();
+        Task<Customer?> GetByIdWithProfileAsync(Guid? CustomerId);
     }
 }
